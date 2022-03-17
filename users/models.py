@@ -30,6 +30,7 @@ class UserManager(BaseUserManager):
         extra_fields.setdefault('is_staff', True)
         extra_fields.setdefault('is_superuser', True)
         extra_fields.setdefault('is_active', True)
+        extra_fields.setdefault("user_type", 'CUSTOMER')
 
         if extra_fields.get('is_staff') is not True:
             raise ValueError('Superuser must be assigned to is_staff=True')
@@ -43,7 +44,13 @@ class UserManager(BaseUserManager):
 
 
 class User(AbstractBaseUser, PermissionsMixin):
+    USER_TYPE_CHOICES = (
+      ('VENDOR', 'Vendor'),
+      ('CUSTOMER', 'Customer'),
+      ('ADMIN', 'Administrator')
+    )
     email = models.EmailField(_('email address'), unique=True)
+    user_type = models.CharField(choices=USER_TYPE_CHOICES, max_length=15, default='CUSTOMER')
     first_name = models.CharField(_('first name'), max_length=30, blank=True)
     last_name = models.CharField(_('last name'), max_length=30, blank=True)
     date_joined = models.DateTimeField(_('date joined'), auto_now_add=True)
