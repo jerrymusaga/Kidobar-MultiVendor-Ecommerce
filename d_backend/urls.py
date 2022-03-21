@@ -23,6 +23,7 @@ urlpatterns = [
     path('admin/', admin.site.urls),
     path('api/users/', include('users.urls',namespace='users')),
     path('api/vendors/', include('vendors.urls',namespace='vendors')),
+    path('api/orders/', include('orders.urls',namespace='orders')),
 
     path('api-auth/', include('rest_framework.urls')),
     
