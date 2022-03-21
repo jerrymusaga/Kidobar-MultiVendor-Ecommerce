@@ -9,3 +9,11 @@ This project is developed using django rest framework
 * `virtualenv env`
 * `env\Scripts\activate`
 * `pip install -r requirements.txt` 
+4. Running django server
+* `python manage.py migrate`
+* `python manage.py makemigrations`
+* `python manage.py migrate`
+* `python manage.py createsuperuser`
+* `python manage.py runserver`
+
+5. Open up the browser and enter http://127.0.0.1:8000/
